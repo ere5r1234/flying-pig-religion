@@ -1,72 +1,1072 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>飞天神猪教</title>
-    <link rel="stylesheet" href="styles.css"> <!-- 引入CSS样式 -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>飞天神猪教 · 唯一真猪，万猪之主</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,600;0,800;0,900;1,500&family=Noto+Sans+Arabic:wght@400;600;800&family=Noto+Sans+Devanagari:wght@400;600;800&family=Noto+Sans+Thai:wght@400;600;800&family=Noto+Sans+KR:wght@400;600;800&family=Noto+Sans+JP:wght@400;600;800;900&family=Noto+Sans+SC:wght@400;600;800;900&family=Noto+Sans+TC:wght@400;600;800;900&family=Noto+Sans+Hebrew:wght@400;600;800&family=Noto+Sans+Bengali:wght@400;600;800&family=Noto+Sans+Tamil:wght@400;600;800&family=Noto+Sans+Telugu:wght@400;600;800&family=Noto+Sans+Malayalam:wght@400;600;800&family=Noto+Sans+Kannada:wght@400;600;800&family=Noto+Sans+Gurmukhi:wght@400;600;800&family=Noto+Sans+Gujarati:wght@400;600;800&family=Noto+Sans+Oriya:wght@400;600;800&family=Noto+Sans+Myanmar:wght@400;600;800&family=Noto+Sans+Khmer:wght@400;600;800&family=Noto+Sans+Lao:wght@400;600;800&family=Noto+Sans+Sinhala:wght@400;600;800&family=Noto+Sans+Georgian:wght@400;600;800&family=Noto+Sans+Armenian:wght@400;600;800&family=Noto+Sans+Ethiopic:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pig:#ffb3c6;--pig-deep:#ff6b94;--pig-sin:#c44569;
+    --sky:#8fd3ff;--sky-deep:#4a90d9;
+    --gold:#ffd95b;--gold-deep:#e8a900;
+    --ink:#2a1b2d;--ink-soft:#3a2b3d;
+    --cream:#fff7f3;--marble:#faf4ee;
+    --shadow:0 8px 30px rgba(58,43,61,.18);
+    --shadow-holy:0 0 40px rgba(255,217,91,.45),0 8px 30px rgba(58,43,61,.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Noto Sans","Noto Sans SC","Noto Sans TC","Noto Sans JP","Noto Sans KR","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+    background:linear-gradient(180deg,#cde9ff 0%,#ffe5ec 35%,var(--cream) 70%);
+    color:var(--ink);overflow-x:hidden;line-height:1.7;
+  }
+  /* RTL 镜像布局 */
+  html.is-rtl body{font-family:"Noto Sans Arabic","Noto Sans Hebrew",system-ui,sans-serif;}
+  html.is-rtl .nav-links{direction:rtl;}
+  html.is-rtl .pray-btn,.html.is-rtl .stat,.html.is-rtl .card,.html.is-rtl .legend,.html.is-rtl .relic,.html.is-rtl .testi{text-align:right;}
+  html.is-rtl .legend{border-left:none;border-right:7px solid var(--sky-deep);}
+  html.is-rtl .legend:hover{transform:translateX(-8px);}
+  html.is-rtl .legend .quote{border-left:none;border-right:4px solid var(--gold);padding-left:0;padding-right:1rem;}
+  html.is-rtl .card{border-top:6px solid var(--pig-deep);}
+  html.is-rtl .card .num-badge{left:0;right:auto;}
+  html.is-rtl .field .err{text-align:right;}
+  html.is-rtl .wheel-wrap{flex-direction:row-reverse;}
+  html.is-rtl .form-card::before{content:"☨";}
+  html.is-rtl .cta-row{flex-direction:row-reverse;}
+  html.is-rtl .quick-pray .pray-bar{direction:rtl;}
+  html.is-rtl .nav-inner{flex-direction:row-reverse;}
+  html.is-rtl .checkbox-row{flex-direction:row-reverse;justify-content:flex-end;}
+  html.is-rtl .nav-links a{font-family:"Noto Sans Arabic",system-ui;}
+  html.is-rtl .hero h1{font-family:"Noto Sans Arabic",serif;}
+  /* 语言选择器样式 */
+  .lang-box{display:flex;align-items:center;gap:.4rem;}
+  .lang-sel{
+    padding:.35rem .55rem;border-radius:30px;border:2px solid var(--pig);
+    background:#fff;color:var(--ink);font-weight:700;font-size:.82rem;cursor:pointer;
+    font-family:inherit;transition:.2s;max-width:220px;
+  }
+  .lang-sel:hover{border-color:var(--pig-deep);background:var(--pig);color:#fff;transform:translateY(-2px);}
+  .lang-label{font-weight:800;color:var(--pig-deep);font-size:.8rem;}
+  a,button,input,select,textarea,label{cursor:pointer}
+  .holy-beams{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+  .beam{position:absolute;top:-20%;width:120px;height:140%;
+    background:linear-gradient(180deg,rgba(255,217,91,.35) 0%,rgba(255,217,91,0) 90%);
+    transform-origin:top center;animation:beam-sway 9s ease-in-out infinite}
+  @keyframes beam-sway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+  .clouds{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.85}
+  .cloud{position:absolute;background:#fff;border-radius:50px;filter:blur(1px);
+    animation:drift linear infinite;opacity:.7}
+  .cloud::before,.cloud::after{content:"";position:absolute;background:#fff;border-radius:50%}
+  @keyframes drift{from{transform:translateX(-20vw)}to{transform:translateX(120vw)}}
+  .falling{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+  .holy-char{position:absolute;top:-50px;font-weight:800;color:rgba(255,107,148,.35);
+    animation:fall linear infinite;user-select:none}
+  @keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+  .mouse-halo{position:fixed;width:120px;height:120px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,217,91,.35) 0%,transparent 70%);
+    pointer-events:none;z-index:9999;transform:translate(-50%,-50%);opacity:0;transition:opacity .2s;mix-blend-mode:screen}
+  .holy-scroll{position:relative;z-index:5;background:linear-gradient(90deg,var(--gold-deep),var(--gold),var(--gold-deep));
+    overflow:hidden;border-top:3px solid var(--pig-deep);border-bottom:3px solid var(--pig-deep);padding:.55rem 0}
+  .holy-scroll .track{display:flex;white-space:nowrap;animation:scroll-left 45s linear infinite;font-weight:800;color:var(--ink);letter-spacing:2px}
+  .holy-scroll .track span{padding:0 2rem}
+  .holy-scroll .track span::before{content:"✦ ";color:var(--pig-deep)}
+  .holy-scroll .track span::after{content:" ✦";color:var(--pig-deep)}
+  @keyframes scroll-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);
+    background:rgba(255,247,243,.9);border-bottom:3px solid var(--pig-deep);box-shadow:var(--shadow)}
+  .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.6rem 1.2rem;flex-wrap:wrap;gap:.5rem}
+  .logo{display:flex;align-items:center;gap:.5rem;font-weight:800;font-size:1.2rem;position:relative}
+  .logo .pig-face{font-size:1.6rem;animation:wobble 3s ease-in-out infinite;display:inline-block}
+  @keyframes wobble{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
+  .logo::before{content:"";position:absolute;inset:-8px 18px;
+    background:radial-gradient(circle,rgba(255,217,91,.4) 0%,transparent 70%);
+    animation:pulse-halo 2.5s ease-in-out infinite;z-index:-1;filter:blur(2px)}
+  @keyframes pulse-halo{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:.9;transform:scale(1.08)}}
+  .nav-links{display:flex;gap:.3rem;flex-wrap:wrap}
+  .nav-links a{text-decoration:none;color:var(--ink);padding:.4rem .85rem;border-radius:30px;font-weight:600;transition:.25s;font-size:.88rem;position:relative}
+  .nav-links a:hover{background:var(--pig-deep);color:#fff;transform:translateY(-2px);box-shadow:0 4px 14px rgba(255,107,148,.35)}
+  section{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:3.5rem 1.2rem}
+  .section-title{font-size:2.2rem;font-weight:900;text-align:center;margin-bottom:.4rem;
+    background:linear-gradient(90deg,var(--pig-deep),var(--gold-deep),var(--sky-deep));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .section-title .emoji{display:inline-block;animation:wobble 3s ease-in-out infinite;margin:0 .2rem}
+  .title-wrap{text-align:center}
+  .section-sub{text-align:center;color:var(--pig-deep);font-weight:700;margin-bottom:2rem;letter-spacing:1.5px;font-size:1rem}
+  .section-sub::before,.section-sub::after{content:" ☨ ";color:var(--gold-deep);font-size:.8rem;margin:0 .4rem;opacity:.7}
+  .hero{text-align:center;padding-top:2rem;min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
+  .hero-pig-wrap{position:relative;width:280px;height:280px;display:flex;align-items:center;justify-content:center;cursor:pointer;user-select:none}
+  .hero-halo{position:absolute;inset:-20px;border-radius:50%;
+    background:conic-gradient(from 0deg,var(--gold),var(--pig),var(--sky),var(--gold));
+    animation:spin-slow 8s linear infinite;filter:blur(18px);opacity:.55}
+  .hero-halo2{position:absolute;inset:10px;border-radius:50%;border:4px dashed var(--gold);
+    animation:spin-slow 14s linear infinite reverse;opacity:.7}
+  .hero-halo2::before{content:"";position:absolute;inset:20px;border-radius:50%;border:3px dotted var(--pig-deep);animation:spin-slow 10s linear infinite}
+  @keyframes spin-slow{to{transform:rotate(360deg)}}
+  .hero-pig{font-size:10rem;filter:drop-shadow(0 16px 24px rgba(255,107,148,.5));
+    animation:fly 4s ease-in-out infinite;position:relative;z-index:2;transition:transform .1s}
+  @keyframes fly{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-26px) rotate(4deg)}}
+  .hero h1{font-size:3.6rem;font-weight:900;margin:.5rem 0;
+    background:linear-gradient(90deg,var(--pig-deep),var(--gold-deep),var(--sky-deep),var(--pig-deep));
+    background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:shine 5s linear infinite;letter-spacing:4px;text-shadow:0 0 30px rgba(255,107,148,.2)}
+  @keyframes shine{to{background-position:300% 0}}
+  .hero p.tagline{font-size:1.2rem;color:var(--ink-soft);max-width:640px;margin:0 auto 1.5rem;font-weight:500;position:relative;display:inline-block}
+  .hero p.tagline::before{content:"❝ ";font-size:1.8rem;color:var(--pig-deep);vertical-align:top}
+  .hero p.tagline::after{content:" ❞";font-size:1.8rem;color:var(--pig-deep);vertical-align:bottom}
+  .cta-row{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem}
+  .cta{display:inline-flex;align-items:center;gap:.4rem;background:linear-gradient(135deg,var(--pig-deep),var(--pig-sin));color:#fff;padding:.9rem 2.2rem;
+    border-radius:50px;text-decoration:none;font-weight:800;box-shadow:var(--shadow-holy);transition:.25s;border:2px solid rgba(255,255,255,.3);letter-spacing:1px}
+  .cta:hover{transform:translateY(-4px) scale(1.04);box-shadow:0 10px 40px rgba(255,107,148,.5)}
+  .cta.gold{background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:var(--ink)}
+  .cta.gold:hover{box-shadow:0 10px 40px rgba(255,217,91,.6)}
+  .stats{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-top:1.5rem}
+  .stat{background:rgba(255,255,255,.7);backdrop-filter:blur(8px);padding:1rem 1.6rem;border-radius:20px;text-align:center;border:2px solid var(--pig);box-shadow:var(--shadow);min-width:120px;transition:.25s}
+  .stat:hover{transform:translateY(-4px) rotate(-2deg);border-color:var(--gold)}
+  .stat .num{font-size:2rem;font-weight:900;color:var(--pig-deep);display:block;font-variant-numeric:tabular-nums}
+  .stat .lbl{font-size:.8rem;opacity:.75;font-weight:600}
+  .quick-pray{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 1.2rem}
+  .pray-bar{background:#fff;border-radius:22px;padding:1.2rem 1.5rem;display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;justify-content:center;box-shadow:var(--shadow-holy);border:3px solid var(--gold)}
+  .pray-bar .label{font-weight:800;color:var(--pig-deep)}
+  .pray-btn{border:none;border-radius:30px;padding:.55rem 1.1rem;font-weight:700;cursor:pointer;transition:.2s;background:var(--cream);color:var(--ink-soft);font-size:.9rem;border:2px solid transparent}
+  .pray-btn:hover{transform:translateY(-2px) scale(1.05);border-color:var(--pig-deep);background:var(--pig);color:#fff}
+  .pray-btn.active{background:var(--pig-deep);color:#fff;animation:pray-pulse .4s}
+  @keyframes pray-pulse{0%{transform:scale(1)}50%{transform:scale(1.15)}100%{transform:scale(1)}}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.3rem}
+  .card{background:#fff;border-radius:20px;padding:1.7rem 1.5rem;box-shadow:var(--shadow);
+    border-top:6px solid var(--pig-deep);transition:.3s;position:relative;overflow:hidden}
+  .card::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 60%,rgba(255,217,91,.18));pointer-events:none;opacity:0;transition:.3s}
+  .card:hover{transform:translateY(-8px) rotate(-0.5deg);border-top-color:var(--gold-deep);box-shadow:var(--shadow-holy)}
+  .card:hover::after{opacity:1}
+  .card .icon{font-size:2.6rem;margin-bottom:.6rem;display:inline-block;transition:.3s}
+  .card:hover .icon{transform:scale(1.25) rotate(10deg)}
+  .card h3{margin-bottom:.5rem;color:var(--pig-deep);font-size:1.2rem}
+  .card .num-badge{position:absolute;top:0;right:0;font-size:4.5rem;font-weight:900;
+    background:linear-gradient(135deg,var(--pig),var(--gold));
+    -webkit-background-clip:text;background-clip:text;color:transparent;opacity:.18;line-height:.9;padding:.2rem .5rem}
+  .card p{font-size:.94rem;position:relative;z-index:1}
+  .legend{background:linear-gradient(135deg,#fff,#fefaf7);border-radius:22px;padding:2rem;margin-bottom:1.4rem;box-shadow:var(--shadow);
+    border-left:7px solid var(--sky-deep);position:relative;transition:.3s;cursor:pointer}
+  .legend:hover{transform:translateX(8px);box-shadow:var(--shadow-holy)}
+  .legend h3{color:var(--sky-deep);margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem;font-size:1.25rem}
+  .legend h3 .chapter{font-size:.75rem;background:var(--sky-deep);color:#fff;padding:.2rem .6rem;border-radius:30px;font-weight:800}
+  .legend .quote{font-style:italic;color:var(--pig-deep);border-left:4px solid var(--gold);
+    padding-left:1rem;margin-top:1rem;background:linear-gradient(90deg,var(--cream),#fff);padding:.9rem 1rem;border-radius:10px;position:relative;font-weight:500}
+  .legend-detail{max-height:0;overflow:hidden;transition:max-height .5s ease,margin-top .5s ease;margin-top:0}
+  .legend.open .legend-detail{max-height:200px;margin-top:.8rem}
+  .legend-detail p{font-size:.92rem;color:var(--ink-soft);background:var(--cream);padding:.8rem 1rem;border-radius:10px}
+  #oracle{background:linear-gradient(135deg,rgba(255,255,255,.6),rgba(255,231,204,.6));border-radius:28px;padding:2.5rem 1.2rem;margin:2rem 0;box-shadow:var(--shadow-holy);border:3px solid var(--gold)}
+  .oracle-wrap{max-width:640px;margin:0 auto;text-align:center}
+  .oracle-box{background:#fff;border-radius:22px;padding:2rem;box-shadow:var(--shadow);border:4px dashed var(--pig-deep);min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
+  .oracle-box::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(255,217,91,.35),transparent 70%);opacity:0;transition:.4s}
+  .oracle-box.reveal::before{opacity:1;animation:flash .5s}
+  @keyframes flash{0%,100%{opacity:.3}50%{opacity:1}}
+  .oracle-stick{font-size:5rem;margin-bottom:1rem;animation:shake 4s ease-in-out infinite;display:inline-block}
+  @keyframes shake{0%,90%,100%{transform:rotate(0)}92%{transform:rotate(-15deg)}94%{transform:rotate(15deg)}96%{transform:rotate(-10deg)}98%{transform:rotate(8deg)}}
+  .oracle-box.reveal .oracle-stick{animation:none;transform:rotate(20deg) scale(1.2)}
+  .oracle-text{font-size:1.05rem;color:var(--ink);line-height:1.9;font-weight:500}
+  .oracle-text .sig{display:block;margin-top:1rem;color:var(--pig-deep);font-weight:800;font-size:.95rem}
+  .oracle-lvl{display:inline-block;padding:.2rem .8rem;border-radius:30px;font-size:.8rem;font-weight:800;margin-bottom:.6rem}
+  .lvl-great{background:var(--gold);color:var(--ink)}
+  .lvl-good{background:var(--sky);color:var(--ink)}
+  .lvl-mid{background:var(--pig);color:var(--ink)}
+  .lvl-warn{background:#fec89a;color:var(--ink)}
+  .wall{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+  .testi{background:#fff;border-radius:18px;padding:1.2rem;box-shadow:var(--shadow);position:relative;transition:.3s;border:2px solid transparent}
+  .testi:hover{transform:translateY(-5px) rotate(-1deg);border-color:var(--pig)}
+  .testi:nth-child(even):hover{transform:translateY(-5px) rotate(1deg)}
+  .testi .who{font-weight:800;color:var(--pig-deep);margin-bottom:.2rem;font-size:.95rem}
+  .testi .who .tag{font-size:.7rem;background:var(--cream);color:var(--ink-soft);padding:.1rem .45rem;border-radius:30px;margin-left:.4rem;font-weight:600}
+  .testi p{font-size:.9rem;color:var(--ink-soft)}
+  .testi .score{position:absolute;top:.8rem;right:.8rem;font-size:1.1rem}
+  .wall-input{margin-top:1.2rem;background:#fff;border-radius:18px;padding:1.2rem;box-shadow:var(--shadow);display:flex;gap:.6rem;flex-wrap:wrap}
+  .wall-input input{flex:1;min-width:200px;padding:.6rem .9rem;border:2px solid #eee;border-radius:10px;font-size:.95rem;background:var(--cream)}
+  .wall-input input:focus{outline:none;border-color:var(--pig-deep);background:#fff}
+  .wall-input button{background:var(--pig-deep);color:#fff;border:none;padding:.6rem 1.3rem;border-radius:30px;font-weight:700;cursor:pointer;transition:.2s}
+  .wall-input button:hover{background:var(--pig-sin);transform:translateY(-2px)}
+  .shrine{background:linear-gradient(135deg,#fff9f0,#fff);border-radius:26px;padding:2rem 1.5rem;box-shadow:var(--shadow-holy);border:3px solid var(--gold-deep)}
+  .shrine-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1.2rem;margin-top:1rem}
+  .relic{background:#fff;border-radius:18px;padding:1.2rem .8rem;text-align:center;box-shadow:var(--shadow);border:3px solid var(--cream);transition:.3s;cursor:pointer;position:relative;overflow:hidden}
+  .relic:hover{transform:translateY(-8px) scale(1.03);border-color:var(--pig);box-shadow:var(--shadow-holy)}
+  .relic .em{font-size:3.8rem;margin-bottom:.4rem;display:inline-block;transition:transform .5s;filter:drop-shadow(0 4px 8px rgba(0,0,0,.1))}
+  .relic:hover .em{transform:rotate(360deg) scale(1.15)}
+  .relic h4{color:var(--pig-deep);font-size:.95rem;margin-bottom:.2rem}
+  .relic p{font-size:.78rem;color:var(--ink-soft);line-height:1.4}
+  .relic .shine{position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.6) 50%,transparent 70%);transform:translateX(-100%);transition:.6s}
+  .relic:hover .shine{transform:translateX(100%)}
+  #game-section{background:rgba(255,255,255,.55);border-radius:28px;box-shadow:var(--shadow-holy);backdrop-filter:blur(6px);border:3px solid rgba(255,107,148,.2)}
+  .game-wrap{text-align:center}
+  #game-canvas{display:block;margin:0 auto;background:linear-gradient(180deg,#aee3ff 0%,#d8f3ff 70%,#e9fbe9 100%);
+    border-radius:18px;box-shadow:var(--shadow);max-width:100%;touch-action:none;border:4px solid #fff}
+  .game-info{display:flex;justify-content:center;gap:1.2rem;flex-wrap:wrap;margin:1rem 0;font-weight:700}
+  .game-info span{background:#fff;padding:.5rem 1.2rem;border-radius:30px;box-shadow:var(--shadow);border:2px solid var(--pig)}
+  .game-info b{color:var(--pig-deep)}
+  .game-ctrl{display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap;margin-top:1rem}
+  .btn{background:linear-gradient(135deg,var(--pig-deep),var(--pig-sin));color:#fff;border:none;padding:.7rem 1.6rem;border-radius:30px;
+    font-weight:700;cursor:pointer;font-size:1rem;transition:.25s;border:2px solid rgba(255,255,255,.3)}
+  .btn:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 6px 22px rgba(255,107,148,.4)}
+  .btn.ghost{background:#fff;color:var(--pig-deep);border:2px solid var(--pig-deep)}
+  .btn.ghost:hover{background:var(--cream)}
+  .howto{font-size:.88rem;opacity:.75;margin-top:.8rem;font-weight:500}
+  #wheel-section{background:rgba(255,231,204,.4);border-radius:28px;padding:2.5rem 1.2rem;box-shadow:var(--shadow-holy);border:3px dashed var(--gold-deep)}
+  .wheel-wrap{display:flex;gap:2rem;justify-content:center;align-items:center;flex-wrap:wrap;max-width:900px;margin:0 auto}
+  .wheel-side{flex:1;min-width:280px;max-width:420px;text-align:center}
+  .wheel-wrapper{position:relative;display:inline-block}
+  .wheel-pointer{position:absolute;top:-8px;left:50%;transform:translateX(-50%);
+    width:0;height:0;border-left:20px solid transparent;border-right:20px solid transparent;border-top:30px solid var(--pig-sin);z-index:10;filter:drop-shadow(0 3px 6px rgba(0,0,0,.25))}
+  .wheel-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,var(--pig-deep),var(--pig-sin));
+    display:flex;align-items:center;justify-content:center;font-size:1.7rem;z-index:9;box-shadow:0 4px 14px rgba(0,0,0,.2);border:4px solid #fff;cursor:pointer}
+  .wheel-info h3{color:var(--gold-deep);font-size:1.4rem;margin-bottom:.6rem}
+  .wheel-info .result-prize{font-size:1.3rem;color:var(--pig-deep);font-weight:800;margin-top:.8rem;min-height:2.5rem}
+  .wheel-info p{font-size:.9rem;color:var(--ink-soft);margin:.6rem 0}
+  .form-card{background:#fff;border-radius:22px;padding:2rem;box-shadow:var(--shadow-holy);max-width:660px;margin:0 auto;border:3px solid var(--pig);position:relative}
+  .form-card::before{content:"☨";position:absolute;top:-28px;left:50%;transform:translateX(-50%);background:var(--pig-deep);color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;box-shadow:var(--shadow)}
+  .field{margin-bottom:1.1rem;position:relative}
+  .field label{display:block;font-weight:700;margin-bottom:.3rem}
+  .field label .req{color:var(--pig-deep)}
+  .field input,.field select,.field textarea{width:100%;padding:.75rem 1rem;border:2px solid #eee;
+    border-radius:12px;font-size:1rem;font-family:inherit;transition:.25s;background:var(--cream)}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--pig-deep);background:#fff;box-shadow:0 0 0 4px rgba(255,107,148,.12)}
+  .field textarea{resize:vertical;min-height:110px}
+  .field .err{color:#e63946;font-size:.82rem;margin-top:.25rem;display:none}
+  .field.invalid input,.field.invalid select,.field.invalid textarea{border-color:#e63946;background:#fff5f5}
+  .field.invalid .err{display:block}
+  .checkbox-row{display:flex;align-items:center;gap:.5rem}
+  .checkbox-row input{width:auto;transform:scale(1.3);accent-color:var(--pig-deep)}
+  footer{background:linear-gradient(180deg,var(--ink),#0d080f);color:#fff;text-align:center;padding:2.5rem 1rem;margin-top:3rem;position:relative;overflow:hidden}
+  footer::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--pig-deep),var(--gold),var(--sky-deep),var(--pig-deep));background-size:300% 100%;animation:shine 8s linear infinite}
+  footer .pig-row{font-size:2.4rem;letter-spacing:.8rem;margin-bottom:.5rem;display:inline-block;animation:wobble 4s ease-in-out infinite}
+  footer a{color:var(--gold)}
+  footer .tiny{font-size:.75rem;opacity:.55;margin-top:1rem}
+  .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(160px);
+    background:linear-gradient(135deg,var(--ink),#4a2b50);color:#fff;padding:1rem 1.8rem;border-radius:40px;z-index:1000;
+    transition:.5s cubic-bezier(.2,1.4,.5,1);box-shadow:var(--shadow-holy);font-weight:700;border:2px solid var(--pig-deep);letter-spacing:.5px}
+  .toast.show{transform:translateX(-50%) translateY(0)}
+  .blessing{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:900;pointer-events:none}
+  .blessing .b-card{background:#fff;border-radius:22px;padding:2rem 2.5rem;text-align:center;box-shadow:var(--shadow-holy);border:4px solid var(--gold);transform:scale(0) rotate(-180deg);transition:.5s cubic-bezier(.2,1.5,.5,1);pointer-events:auto}
+  .blessing.show .b-card{transform:scale(1) rotate(0)}
+  .blessing .b-card .b-em{font-size:4.5rem;display:block;margin-bottom:.5rem;animation:wobble 2s infinite}
+  .blessing .b-card .b-title{font-size:1.5rem;font-weight:900;color:var(--pig-deep);margin-bottom:.3rem}
+  .blessing .b-card .b-body{color:var(--ink-soft);font-size:.95rem;max-width:320px}
+  .celebrate{position:fixed;inset:0;pointer-events:none;z-index:9999;display:none}
+  .celebrate.show{display:block}
+  .confetti{position:absolute;width:12px;height:16px;top:-20px;animation:confetti-fall linear forwards;border-radius:2px}
+  @keyframes confetti-fall{to{transform:translateY(110vh) rotate(720px)}}
+  @media(max-width:640px){
+    .hero h1{font-size:2rem;letter-spacing:2px}
+    .hero-pig{font-size:6.5rem}
+    .hero-pig-wrap{width:200px;height:200px}
+    .section-title{font-size:1.5rem}
+    .nav-links a{padding:.32rem .55rem;font-size:.78rem}
+    .pray-bar{padding:.8rem}
+    .pray-bar .label{width:100%;text-align:center}
+    .wheel-wrap{flex-direction:column}
+    .form-card{padding:1.3rem;margin-top:1rem}
+    .form-card::before{width:48px;height:48px;font-size:1.4rem;top:-24px}
+  }
+</style>
 </head>
 <body>
-    <!-- 顶部导航 -->
-    <header>
-        <div class="logo">
-            <h1>飞天神猪教</h1>
-            <p>猪神降临，教义显现</p>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#home">首页</a></li>
-                <li><a href="#doctrine">教义</a></li>
-                <li><a href="#legend">神猪的传说</a></li>
-                <li><a href="#contact">联系我们</a></li>
-            </ul>
-        </nav>
-    </header>
+<div class="holy-beams" id="holyBeams"></div>
+<div class="clouds" id="clouds"></div>
+<div class="falling" id="fallingHoly"></div>
+<div class="mouse-halo" id="mouseHalo"></div>
 
-    <!-- 首页介绍 -->
-    <section id="home" class="intro">
-        <h2>欢迎来到飞天神猪教</h2>
-        <p>在这里，我们崇拜飞天神猪，它不仅给予我们智慧，还赋予我们美味的启示。加入我们，飞向更高的天际，一同享受飞天猪带来的奇迹！</p>
-    </section>
+<div class="holy-scroll"><div class="track" id="holyTrack"></div></div>
 
-    <!-- 教义部分 -->
-    <section id="doctrine">
-        <h2>飞天神猪教教义</h2>
-        <p>我们信奉飞天神猪，追随它的智慧，永远在空中飞翔。</p>
-        <ul>
-            <li>神猪是我们的最终信仰，所有美好源自神猪。</li>
-            <li>每天要奉献三片培根，以表达对神猪的敬意。</li>
-            <li>每年必须进行一次飞天仪式，跟随神猪翱翔天际。</li>
-            <li>香肠是神猪的神圣食物，我们每周必须吃一次香肠。</li>
-        </ul>
-    </section>
+<nav>
+  <div class="nav-inner">
+    <div class="logo"><span class="pig-face">🐷</span><span data-i18n="nav_logo">飞天神猪教 · 唯一真猪</span></div>
+    <div class="nav-links">
+      <a href="#doctrine" data-i18n="nav_doctrine">📜 七诫</a>
+      <a href="#legends" data-i18n="nav_legends">📖 传说</a>
+      <a href="#oracle" data-i18n="nav_oracle">🎋 神谕</a>
+      <a href="#shrine" data-i18n="nav_shrine">🏛️ 圣物</a>
+      <a href="#witnesses" data-i18n="nav_witnesses">💬 见证</a>
+      <a href="#game-section" data-i18n="nav_game">🎮 游戏</a>
+      <a href="#wheel-section" data-i18n="nav_wheel">🎰 转盘</a>
+      <a href="#contact" data-i18n="nav_contact">✉️ 入教</a>
+      <div class="lang-box">
+        <span class="lang-label" data-i18n="lang_label">🌍 语言</span>
+        <select id="langSel" class="lang-sel" title="Language / 语言"></select>
+      </div>
+    </div>
+  </div>
+</nav>
 
-    <!-- 神猪的传说 -->
-    <section id="legend">
-        <h2>神猪的传说</h2>
-        <p>在古老的时代，飞天神猪从天而降，带来了智慧与美食。神猪的降临改变了整个世界，它的羽翼上散发着无尽的美味气息。每年，信徒们都会举行祭典，感恩神猪的恩赐。</p>
-    </section>
+<header class="hero">
+  <div class="hero-pig-wrap" id="heroPig" title="点我！神猪会回应你">
+    <div class="hero-halo"></div>
+    <div class="hero-halo2"></div>
+    <div class="hero-pig">🐷</div>
+  </div>
+  <h1 data-i18n="hero_title">飞天神猪教</h1>
+  <p class="tagline" data-i18n="hero_tag">凡有翅膀者皆可起飞，何况猪呢？何况你呢？——《神猪经·起飞篇》第七行</p>
+  <div class="cta-row">
+    <a href="#doctrine" class="cta" data-i18n="cta_doctrine">🙏 研读神猪七诫</a>
+    <a href="#oracle" class="cta gold" data-i18n="cta_oracle">🎋 求取今日神谕</a>
+    <button class="cta" id="prayNow" data-i18n="cta_pray">🕉️ 快速祈祷</button>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="num" id="statFollower">9999</div><div class="lbl" data-i18n="stat_lbl1">虔诚飞天猪徒</div></div>
+    <div class="stat"><div class="num" id="statPrayer">365</div><div class="lbl" data-i18n="stat_lbl2">日均祈祷次数</div></div>
+    <div class="stat"><div class="num">∞</div><div class="lbl" data-i18n="stat_lbl3">起飞可能性</div></div>
+    <div class="stat"><div class="num">7</div><div class="lbl" data-i18n="stat_lbl4">大神猪戒律</div></div>
+  </div>
+</header>
 
-    <!-- 联系我们部分 -->
-    <section id="contact">
-        <h2>联系我们</h2>
-        <p>想要了解更多关于飞天神猪教的真谛？请联系我们，我们期待与你一起飞翔。</p>
-        <form id="contact-form">
-            <label for="name">姓名：</label>
-            <input type="text" id="name" name="name" required placeholder="请输入你的名字"><br><br>
-            <label for="email">邮箱：</label>
-            <input type="email" id="email" name="email" required placeholder="请输入你的邮箱"><br><br>
-            <label for="message">留言：</label><br>
-            <textarea id="message" name="message" required placeholder="请输入留言"></textarea><br><br>
-            <button type="submit">提交</button>
-        </form>
-    </section>
+<div class="quick-pray">
+  <div class="pray-bar">
+    <span class="label" data-i18n="pray_label">🕉️ 快速祈愿：</span>
+    <button class="pray-btn" data-pray="起飞" data-i18n="pray_takeoff">✈️ 求起飞</button>
+    <button class="pray-btn" data-pray="暴富" data-i18n="pray_rich">💰 求暴富</button>
+    <button class="pray-btn" data-pray="姻缘" data-i18n="pray_love">💕 求姻缘</button>
+    <button class="pray-btn" data-pray="不挂科" data-i18n="pray_grade">📚 求不挂科</button>
+    <button class="pray-btn" data-pray="零食" data-i18n="pray_snack">🍰 求零食永不完</button>
+    <button class="pray-btn" data-pray="和平" data-i18n="pray_peace">🕊️ 求世界和平</button>
+    <button class="pray-btn" data-pray="减肥" data-i18n="pray_fit">🍩 永不减肥</button>
+  </div>
+</div>
 
-    <!-- 页脚 -->
-    <footer>
-        <p>版权所有 &copy; 2025 飞天神猪教 | 由飞天神猪的信徒设计</p>
-    </footer>
+<section id="doctrine">
+  <div class="title-wrap"><div class="section-title"><span class="emoji">📜</span> <span data-i18n="doctrine_title">神猪七诫 · 神圣教义</span></div></div>
+  <div class="section-sub" data-i18n="doctrine_sub">凡信神猪者，必先信自己能飞；凡信自己能飞者，必先胖</div>
+  <div class="grid">
+    <div class="card"><div class="num-badge">壹</div><div class="icon">🚀</div><h3 data-i18n="d1_title">起飞诫</h3><p data-i18n="d1_body">汝当每日三省吾身：今日起飞了没？没有？那赶紧睡觉，梦里啥都有。梦里起飞也算，计入飞行里程。</p></div>
+    <div class="card"><div class="num-badge">贰</div><div class="icon">🍩</div><h3 data-i18n="d2_title">不贪食诫</h3><p data-i18n="d2_body">神猪爱吃，但汝不可抢神猪的甜甜圈。这是大忌，违者罚抄《起飞篇》一百遍，并用甜甜圈蘸墨抄写。</p></div>
+    <div class="card"><div class="num-badge">叁</div><div class="icon">😴</div><h3 data-i18n="d3_title">安眠诫</h3><p data-i18n="d3_body">安息日不可数猪，数羊可以。数猪会让人产生"我也能飞"的错觉，需谨慎。若真数了，请立刻躺下并起飞。</p></div>
+    <div class="card"><div class="num-badge">肆</div><div class="icon">🌈</div><h3 data-i18n="d4_title">彩虹诫</h3><p data-i18n="d4_body">雨后见彩虹，当高呼"神猪显灵！"三次。若未见彩虹，说明你飞得不够高。若见过，记得拍照发朋友圈。</p></div>
+    <div class="card"><div class="num-badge">伍</div><div class="icon">🪶</div><h3 data-i18n="d5_title">羽毛诫</h3><p data-i18n="d5_body">汝不可嘲笑任何长翅膀的生物，因为它们都飞得比你高。谦卑是飞天的第一步，胖是第二步。</p></div>
+    <div class="card"><div class="num-badge">陆</div><div class="icon">🐽</div><h3 data-i18n="d6_title">圆融诫</h3><p data-i18n="d6_body">身型越圆，福气越满。减肥在神猪教视为"轻度叛教"，请三思而后行。跑步的猪不是好猪。</p></div>
+    <div class="card"><div class="num-badge">柒</div><div class="icon">✨</div><h3 data-i18n="d7_title">显圣诫</h3><p data-i18n="d7_body">凡见粉色流星划过夜空，必为神猪显圣。可许愿一次，是否灵验，概不退换。神猪很忙，请挑重点许。</p></div>
+  </div>
+</section>
 
-    <script src="script.js"></script> <!-- 引入JavaScript -->
+<section id="legends">
+  <div class="title-wrap"><div class="section-title"><span class="emoji">📖</span> <span data-i18n="legend_title">神猪传说 · 神圣典籍</span></div></div>
+  <div class="section-sub" data-i18n="legend_sub">千百年来口口相传的起飞秘闻，点击展开隐藏经文</div>
+  <div class="legend" data-legend>
+    <h3><span class="chapter">第一章</span>🐷 神猪的诞生</h3>
+    <p>太初之时，天地一片混沌，唯有一团粉色的云在虚空中打盹。这团云睡了一万八千年，醒来后伸了个懒腰，"啪"地一声，掉下来一只圆滚滚的小猪。小猪抬头望天，心想："我从天上来，那我就是天选之猪吧。"于是它拍了拍屁股上的灰尘，腾空而起——飞天神猪，就此诞生。</p>
+    <div class="quote">"朕本天上猪，误落凡尘间。回首一蹬腿，重回九重天。" ——《神猪经·降世篇》</div>
+    <div class="legend-detail"><p><b>【隐藏经文】</b>其实那团粉色云本来是一团棉花糖。神猪睡了太久，把棉花糖睡成了真正的云。从此每当你吃棉花糖，都是在重温神猪的襁褓。</p></div>
+  </div>
+  <div class="legend" data-legend>
+    <h3><span class="chapter">第二章</span>🌪️ 大洪水与飞天方舟</h3>
+    <p>上古洪水滔天，诺亚造了方舟载万物，唯独忘了请猪。神猪站在山顶，望着上涨的水面，淡定地说："没事，我自己飞。"它鼓起腮帮子，四蹄生风，硬是飞过了整片汪洋。途中还顺手救起了一只溺水的火烈鸟，火烈鸟感激涕零，从此成了神猪的御用坐骑——虽然神猪并不需要坐骑。</p>
+    <div class="quote">"能飞的猪，从不等船。" ——《神猪经·渡海篇》</div>
+    <div class="legend-detail"><p><b>【隐藏经文】</b>诺亚后来道歉了，神猪表示"没事，我飞得挺舒服的"。诺亚方舟至今仍保留着一个"猪的专用停机坪"，虽然谁也没见过。</p></div>
+  </div>
+  <div class="legend" data-legend>
+    <h3><span class="chapter">第三章</span>🌙 嫦娥悔不当初</h3>
+    <p>话说嫦娥奔月，独守广寒宫，寂寞难耐。某夜抬头，见一道粉色光芒划过月宫，竟是神猪路过。嫦娥惊呼："你是怎么飞上来的？"神猪眨眨眼："减肥减的，瘦了就能飞。"嫦娥低头看了看怀里的玉兔，又看了看自己，默默放下了手里的月饼。从那以后，月亮上多了一道粉色的影子，据说那是神猪留下的起飞跑道。</p>
+    <div class="quote">"嫦娥应悔偷灵药，不如学猪学起飞。" ——唐·李商隐（可能记错了，可能是神猪写的）</div>
+    <div class="legend-detail"><p><b>【隐藏经文】</b>玉兔后来偷偷拜神猪为师学起飞。现在月亮上偶尔出现的"不明飞行物"，其实是玉兔在练手。</p></div>
+  </div>
+  <div class="legend" data-legend>
+    <h3><span class="chapter">第四章</span>⚔️ 神猪大战地心引力</h3>
+    <p>地心引力乃是飞天神猪一生之敌。某日，引力化作一位黑袍老者，拦住神猪去路："汝一只猪，安敢违我？"神猪不语，只默默吃下三个甜甜圈，两个苹果派，一桶炸鸡，然后打了个饱嗝。引力大惊："你这是作甚？"神猪笑曰："吃饱了才有力气反抗你。"说罢一飞冲天，引力当场破防，从此见到粉色物体便绕道而行。</p>
+    <div class="quote">"给我一个支点，我能撬动地球；给我一个甜甜圈，我能飞出太阳系。" ——神猪语录</div>
+    <div class="legend-detail"><p><b>【隐藏经文】</b>地心引力至今仍在看心理医生。牛顿发现万有引力那天，其实是神猪用一个甜甜圈把苹果砸下去的。</p></div>
+  </div>
+  <div class="legend" data-legend>
+    <h3><span class="chapter">第五章</span>🍝 神猪与飞天面条的下午茶</h3>
+    <p>传说飞天意大利面大神某日来天上串门，看到一只粉色的猪在空中翱翔，大惊。二人在银河边喝了下午茶，面条大神用肉酱招待，神猪用甜甜圈回礼。临别时两位大神握手，从此定下"飞字门规"：凡带飞字之宗教，互相点赞、互相转发朋友圈。</p>
+    <div class="quote">"面条与猪齐飞，酱汁共粉肉一色。" ——《飞字门规·序》</div>
+    <div class="legend-detail"><p><b>【隐藏经文】</b>据说那天下午茶喝了三壶。银河至今仍残留着淡淡的甜甜圈味，宇航员报告多次闻到。</p></div>
+  </div>
+</section>
+
+<section id="oracle">
+  <div class="oracle-wrap">
+    <div class="title-wrap"><div class="section-title"><span class="emoji">🎋</span> <span data-i18n="oracle_title">神猪神谕 · 解签</span></div></div>
+    <div class="section-sub" data-i18n="oracle_sub">闭目凝神，心中默念所求，然后摇动签筒</div>
+    <div class="oracle-box" id="oracleBox">
+      <div class="oracle-stick">🎋</div>
+      <div class="oracle-text"><div id="oracleHint" style="opacity:.7" data-i18n="oracle_hint">点击下方按钮，神猪将降下启示</div></div>
+    </div>
+    <div style="margin-top:1.2rem;display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap">
+      <button class="btn" id="drawOracle" data-i18n="oracle_draw">🎋 摇签求神谕</button>
+      <button class="btn ghost" id="anotherOracle" data-i18n="oracle_another">✨ 再求一签</button>
+    </div>
+  </div>
+</section>
+
+<section id="shrine">
+  <div class="title-wrap"><div class="section-title"><span class="emoji">🏛️</span> <span data-i18n="shrine_title">神猪圣物柜</span></div></div>
+  <div class="section-sub" data-i18n="shrine_sub">历代飞天长老传承之宝，触摸即可获得神圣BUFF（24小时有效）</div>
+  <div class="shrine">
+    <div class="shrine-grid">
+      <div class="relic" data-buff="攻击力+100"><div class="shine"></div><div class="em">🍩</div><h4>神猪初代甜甜圈</h4><p>神猪吃的第一个甜甜圈的模具复制品</p></div>
+      <div class="relic" data-buff="起飞成功率+50%"><div class="shine"></div><div class="em">🪶</div><h4>初飞之羽毛</h4><p>神猪第一次起飞后掉落的翅膀羽毛</p></div>
+      <div class="relic" data-buff="饱腹度MAX"><div class="shine"></div><div class="em">🍜</div><h4>飞面教下午茶碗</h4><p>神猪与面神共饮下午茶之碗</p></div>
+      <div class="relic" data-buff="睡眠质量+999"><div class="shine"></div><div class="em">💤</div><h4>创世混沌棉花糖</h4><p>神猪诞生的粉色棉花糖的一小撮</p></div>
+      <div class="relic" data-buff="减肥欲望-100%"><div class="shine"></div><div class="em">🐽</div><h4>圆融鼻环</h4><p>戴上它就不想减肥，散发猪的萌气</p></div>
+      <div class="relic" data-buff="财运+666"><div class="shine"></div><div class="em">🌟</div><h4>粉色流星陨石</h4><p>神猪某次显圣时掉落的陨石碎片</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="witnesses">
+  <div class="title-wrap"><div class="section-title"><span class="emoji">💬</span> <span data-i18n="witness_title">神圣见证墙</span></div></div>
+  <div class="section-sub" data-i18n="witness_sub">虔诚猪徒的真实体验，分享你与神猪的故事</div>
+  <div class="wall" id="wall"></div>
+  <div class="wall-input">
+    <input type="text" id="wallName" data-i18n-ph="wall_name_ph" placeholder="你的教名（2-8字）" maxlength="8">
+    <input type="text" id="wallText" data-i18n-ph="wall_text_ph" placeholder="写下你的见证…" maxlength="60">
+    <button id="wallSubmit" data-i18n="wall_submit">🙏 提交见证</button>
+  </div>
+</section>
+
+<section id="game-section">
+  <div class="title-wrap"><div class="section-title"><span class="emoji">🎮</span> <span data-i18n="game_title">神猪模拟飞行 · 神圣试炼</span></div></div>
+  <div class="section-sub" data-i18n="game_sub">操控神猪起飞，吃甜甜圈，躲闪电，看你能飞多远</div>
+  <div class="game-wrap">
+    <div class="game-info">
+      <span data-i18n="g_score">得分：</span><b id="score">0</b>
+      <span data-i18n="g_best">最高：</span><b id="best">0</b>
+      <span data-i18n="g_donuts">收集🍩：</span><b id="donuts">0</b>
+      <span data-i18n="g_state">状态：</span><b id="state" data-i18n="g_ready">待起飞</b>
+    </div>
+    <canvas id="game-canvas" width="800" height="450"></canvas>
+    <div class="game-ctrl">
+      <button class="btn" id="startBtn" data-i18n="g_start">🚀 开始飞行</button>
+      <button class="btn ghost" id="pauseBtn" data-i18n="g_pausebtn">⏸ 暂停</button>
+      <button class="btn ghost" id="soundBtn" data-i18n="g_sound_on">🔊 音效开</button>
+    </div>
+    <p class="howto" data-i18n="g_howto">操作：点击/空格 = 向上飞 · 收集🍩得分 · 躲开⚡☁️ · 收集够甜甜圈解锁【神猪形态】</p>
+    <p id="gameIntro" style="text-align:center;margin-top:1rem;color:var(--pig-deep);font-weight:700" data-i18n="g_intro">🚀 点击「开始飞行」即可起飞</p>
+  </div>
+</section>
+
+<section id="wheel-section">
+  <div class="title-wrap"><div class="section-title"><span class="emoji">🎰</span> <span data-i18n="wheel_title">神圣甜甜圈大转盘</span></div></div>
+  <div class="section-sub" data-i18n="wheel_sub">神猪加持的抽奖转盘，每日三签，心诚则灵</div>
+  <div class="wheel-wrap">
+    <div class="wheel-side">
+      <div class="wheel-wrapper">
+        <div class="wheel-pointer"></div>
+        <canvas class="wheel-canvas" id="wheelCanvas" width="340" height="340"></canvas>
+        <div class="wheel-center" id="wheelCenter" title="点我也能转！">🐷</div>
+      </div>
+    </div>
+    <div class="wheel-side wheel-info">
+      <h3 data-i18n="wheel_h3">🍩 神猪恩赐 · 求好运</h3>
+      <p data-i18n="wheel_desc">神猪会根据你的虔诚度分配奖品。</p>
+      <div style="margin:1rem 0;display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap">
+        <button class="btn" id="spinBtn" data-i18n="wheel_spin">🎰 开始转</button>
+        <button class="btn ghost" id="remainBtn" data-i18n-tpl="wheel_remain">今日剩余：<b id="remain">3</b> 次</button>
+      </div>
+      <div class="result-prize" id="prizeResult" data-i18n="wheel_wait">等待神猪旨意…</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="title-wrap"><div class="section-title"><span class="emoji">✉️</span> <span data-i18n="contact_title">入教申请表 · 神圣仪式</span></div></div>
+  <div class="section-sub" data-i18n="contact_sub">填下信息，神猪将于三日内托梦审批，不接受上诉</div>
+  <form class="form-card" id="contactForm" novalidate>
+    <div class="field" id="f-name">
+      <label data-i18n="f_name_lbl">教名（入教后神圣称呼）<span class="req">*</span></label>
+      <input type="text" name="name" data-i18n-ph="f_name_ph" placeholder="例如：飞天小粉红 / 甜甜圈尊者">
+      <div class="err" data-i18n="f_name_err">请输入你的教名（至少2个字）</div>
+    </div>
+    <div class="field" id="f-email">
+      <label data-i18n="f_email_lbl">联络飞鸽地址（邮箱）<span class="req">*</span></label>
+      <input type="email" name="email" data-i18n-ph="f_email_ph" placeholder="pig@fly-heaven.com">
+      <div class="err" data-i18n="f_email_err">请输入有效的飞鸽地址</div>
+    </div>
+    <div class="field" id="f-faith">
+      <label data-i18n="f_faith_lbl">你的信仰程度<span class="req">*</span></label>
+      <select name="faith" id="faithSel">
+        <option value="" data-i18n="f_faith_sel">— 请选择 —</option>
+        <option value="萌新" data-i18n="f_faith1">🐷 萌新猪徒（刚听说猪能飞）</option>
+        <option value="信徒" data-i18n="f_faith2">🐽 虔诚信徒（已练扇耳朵）</option>
+        <option value="执事" data-i18n="f_faith3">🥧 供奉执事（家里甜甜圈没断过）</option>
+        <option value="长老" data-i18n="f_faith4">🎩 飞天长老（离地0.5米）</option>
+        <option value="圣猪" data-i18n="f_faith5">👑 至高圣猪（飞出过太阳系）</option>
+      </select>
+      <div class="err" data-i18n="f_faith_err">请选择你的信仰程度</div>
+    </div>
+    <div class="field" id="f-donut">
+      <label data-i18n="f_donut_lbl">你每周吃多少个甜甜圈？（含做梦）<span class="req">*</span></label>
+      <select name="donut" id="donutSel">
+        <option value="" data-i18n="f_donut_sel">— 请选择 —</option>
+        <option value="0-2" data-i18n="f_donut1">0-2个（这也叫信？）</option>
+        <option value="3-7" data-i18n="f_donut2">3-7个（入门水平）</option>
+        <option value="8-15" data-i18n="f_donut3">8-15个（神猪爱你）</option>
+        <option value="15+" data-i18n="f_donut4">15+个（你就是神猪本人？）</option>
+      </select>
+      <div class="err" data-i18n="f_donut_err">请告诉神猪你有多爱吃</div>
+    </div>
+    <div class="field" id="f-message">
+      <label data-i18n="f_msg_lbl">给神猪的悄悄话<span class="req">*</span></label>
+      <textarea name="message" data-i18n-ph="f_msg_ph" placeholder="向神猪倾诉你的起飞愿望、烦恼、或者今天吃了啥好的…"></textarea>
+      <div class="err" data-i18n="f_msg_err">留言不能少于5个字，多说点神猪才爱听</div>
+    </div>
+    <div class="field" id="f-agree">
+      <div class="checkbox-row">
+        <input type="checkbox" name="agree" id="agree">
+        <label for="agree" style="margin:0" data-i18n="f_agree_lbl">我已通读《神猪经》七诫，承诺不嘲笑任何试图起飞的猪，绝不主动减肥（除非神猪托梦允许）。</label>
+      </div>
+      <div class="err" data-i18n="f_agree_err">请勾选入教神圣誓言</div>
+    </div>
+    <button type="submit" class="btn" style="width:100%;padding:1rem;font-size:1.05rem;letter-spacing:2px" data-i18n="f_submit">🙏🕉️☨ 提交入教申请 · 等待神猪托梦</button>
+  </form>
+</section>
+
+<footer>
+  <div class="pig-row">🐷🐷🐷</div>
+  <p style="font-weight:600" data-i18n="footer_main">© 飞天神猪教总部 · 本教义纯属娱乐（大概）· 请勿当真起飞</p>
+  <p style="margin-top:.4rem;opacity:.85;font-size:.88rem" data-i18n="footer_cp">官方CP：飞天神猪 × 飞天意大利面 · 如有雷同，纯属神猪显灵</p>
+  <p class="tiny" data-i18n="footer_hotline">起飞热线：1-800-FLY-PIG · 总部：银河系·猪旋臂·甜甜圈星云第7号洞</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+<div class="blessing" id="blessing"><div class="b-card"><span class="b-em">🐷</span><div class="b-title" id="blessTitle">神猪祝福</div><div class="b-body" id="blessBody">祝你起飞顺利！</div></div></div>
+<div class="celebrate" id="celebrate"></div>
+
+<script src="i18n.js"></script>
+<script>
+/* ===================== i18n 初始化与更新回调 ===================== */
+window.PIG_I18N_UPDATE=function(){
+  /* 经文滚动条 */
+  const scrs=(D[I18N.current]&&D[I18N.current].holy_msgs)||D['en'].holy_msgs||D['zh-cn'].holy_msgs;
+  const t=document.getElementById('holyTrack');const all=[...scrs,...scrs];
+  t.innerHTML=all.map(s=>`<span>${s}</span>`).join('');
+  /* 转盘剩余次数按钮的模板 */
+  const remainBtn=document.getElementById('remainBtn');
+  if(remainBtn){
+    const nEl=document.getElementById('remain');
+    const nVal=nEl?nEl.textContent:'3';
+    /* 注意：先取模板，再手动插入带id的b标签，避免i18n把{n}提前替换成纯文本 */
+    const dict=D[I18N.current]||D['en']||D['zh-cn']||{};
+    const tpl=dict['wheel_remain']||'Today: {n} left';
+    remainBtn.innerHTML=tpl.split('{n}').join('<b id="remain">'+nVal+'</b>');
+  }
+  /* 信仰下拉框重绘 */
+  const faithSel=document.getElementById('faithSel');
+  if(faithSel){
+    const sel=faithSel.value;
+    const opts=[
+      ['','f_faith_sel'],['萌新','f_faith1'],['信徒','f_faith2'],
+      ['执事','f_faith3'],['长老','f_faith4'],['圣猪','f_faith5']
+    ];
+    faithSel.innerHTML=opts.map(o=>`<option value="${o[0]}" ${sel===o[0]?'selected':''}>${I18N.t(o[1])}</option>`).join('');
+  }
+  const donutSel=document.getElementById('donutSel');
+  if(donutSel){
+    const sel=donutSel.value;
+    const opts=[
+      ['','f_donut_sel'],['0-2','f_donut1'],['3-7','f_donut2'],
+      ['8-15','f_donut3'],['15+','f_donut4']
+    ];
+    donutSel.innerHTML=opts.map(o=>`<option value="${o[0]}" ${sel===o[0]?'selected':''}>${I18N.t(o[1])}</option>`).join('');
+  }
+  /* 游戏状态按钮文字（暂停/开始/音效） */
+  try{
+    if(typeof game!=='undefined'&&game){
+      const state=document.getElementById('state');
+      if(state){
+        if(game.status==='ready')state.textContent=I18N.t('g_ready');
+        else if(game.status==='running')state.textContent=I18N.t('g_running');
+        else if(game.status==='paused')state.textContent=I18N.t('g_pause');
+        else if(game.status==='gameover')state.textContent=I18N.t('g_crash');
+      }
+      const pb=document.getElementById('pauseBtn');if(pb)pb.textContent=(game.status==='paused')?I18N.t('g_go'):I18N.t('g_pausebtn');
+      const sb=document.getElementById('soundBtn');if(sb)sb.textContent=SFX.isOn()?I18N.t('g_sound_on'):I18N.t('g_sound_off');
+      const stb=document.getElementById('startBtn');if(stb)stb.textContent=(game.status==='running'||game.status==='paused')?I18N.t('g_restart'):I18N.t('g_start');
+    }
+  }catch(e){}
+};
+(function(){
+  I18N.init();
+  renderLangSelect('langSel','lang-sel');
+  const sel=document.getElementById('langSel');
+  sel&&sel.addEventListener('change',e=>{I18N.setLang(e.target.value);});
+})();
+
+/* ===================== 工具 ===================== */
+const toast=document.getElementById('toast');let toastTimer;
+function showToast(msg){toast.textContent=msg;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2600);}
+const blessEl=document.getElementById('blessing');const blessTitle=document.getElementById('blessTitle');const blessBody=document.getElementById('blessBody');let blessTimer;
+function showBlessing(title,body,em='🐷'){blessEl.querySelector('.b-em').textContent=em;blessTitle.textContent=title;blessBody.textContent=body;blessEl.classList.add('show');clearTimeout(blessTimer);blessTimer=setTimeout(()=>blessEl.classList.remove('show'),2800);}
+function rand(a,b){return a+Math.random()*(b-a);}
+function randInt(a,b){return Math.floor(rand(a,b+1));}
+function pick(arr){return arr[Math.floor(Math.random()*arr.length)];}
+
+/* ===================== 音效（Web Audio） ===================== */
+const SFX=(()=>{
+  let ctx,enabled=true;
+  function ensure(){if(!ctx)ctx=new (window.AudioContext||window.webkitAudioContext)();return ctx;}
+  function beep(freq=440,dur=.15,type='sine',vol=.15,slide=null){
+    if(!enabled)return;try{
+      const c=ensure();const o=c.createOscillator();const g=c.createGain();
+      o.type=type;o.frequency.setValueAtTime(freq,c.currentTime);
+      if(slide)o.frequency.exponentialRampToValueAtTime(slide,c.currentTime+dur);
+      g.gain.setValueAtTime(vol,c.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+dur);
+      o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+dur);
+    }catch(e){}
+  }
+  function chord(freqs,dur=.3,type='triangle'){freqs.forEach((f,i)=>setTimeout(()=>beep(f,dur,type,.1),i*50));}
+  return{
+    toggle(){enabled=!enabled;return enabled;},
+    isOn(){return enabled;},
+    pig(){beep(380,.12,'square',.12);setTimeout(()=>beep(560,.18,'square',.12),80);},
+    flap(){beep(720,.06,'sine',.08);},
+    food(){beep(880,.08,'triangle',.1);setTimeout(()=>beep(1320,.12,'triangle',.1),60);},
+    hit(){beep(160,.3,'sawtooth',.15,50);},
+    pray(){chord([523,659,784,1046],.4);},
+    spin(){beep(200,.05,'square',.08);},
+    win(){chord([523,659,784,1046,1318],.5,'triangle');},
+    oracle(){chord([600,800,1000,1200],.6,'sine');},
+    relic(){beep(1000,.1,'sine',.1);setTimeout(()=>beep(1500,.15,'sine',.1),80);setTimeout(()=>beep(2000,.2,'sine',.1),180);}
+  };
+})();
+
+/* ===================== 背景：光束、云、飘落文字 ===================== */
+(function(){
+  const box=document.getElementById('holyBeams');
+  for(let i=0;i<5;i++){const b=document.createElement('div');b.className='beam';b.style.left=(10+i*20)+'%';b.style.animationDelay=(-i*1.5)+'s';b.style.animationDuration=(7+i*0.8)+'s';box.appendChild(b);}
+})();
+(function(){
+  const box=document.getElementById('clouds');
+  for(let i=0;i<7;i++){
+    const c=document.createElement('div');c.className='cloud';const size=50+Math.random()*80;
+    c.style.width=size+'px';c.style.height=(size*0.5)+'px';c.style.top=(Math.random()*85)+'%';
+    c.style.animationDuration=(25+Math.random()*35)+'s';c.style.animationDelay=(-Math.random()*40)+'s';
+    const b1=document.createElement('div');b1.style.cssText=`position:absolute;width:${size*0.6}px;height:${size*0.6}px;top:-${size*0.3}px;left:${size*0.2}px;background:#fff;border-radius:50%`;
+    const b2=document.createElement('div');b2.style.cssText=`position:absolute;width:${size*0.5}px;height:${size*0.5}px;top:-${size*0.2}px;left:${size*0.55}px;background:#fff;border-radius:50%`;
+    c.appendChild(b1);c.appendChild(b2);box.appendChild(c);
+  }
+})();
+(function(){
+  const box=document.getElementById('fallingHoly');
+  const chars=['🐷','🍩','✈️','☨','🙏','🕉️','飞','猪','神','福','善','圆'];
+  function spawn(){
+    const ch=chars[Math.floor(Math.random()*chars.length)];const el=document.createElement('div');
+    el.className='holy-char';el.textContent=ch;el.style.left=(Math.random()*100)+'%';
+    el.style.fontSize=(14+Math.random()*22)+'px';el.style.animationDuration=(8+Math.random()*12)+'s';
+    el.style.color=Math.random()<0.5?'rgba(255,107,148,.3)':'rgba(255,217,91,.4)';
+    box.appendChild(el);setTimeout(()=>el.remove(),22000);
+  }
+  setInterval(spawn,650);for(let i=0;i<15;i++)setTimeout(spawn,i*200);
+})();
+
+/* ===================== 鼠标圣光 + 跟随粒子 ===================== */
+(function(){
+  const halo=document.getElementById('mouseHalo');
+  let px=innerWidth/2,py=innerHeight/2,hx=px,hy=py,mouseOn=false;
+  addEventListener('mousemove',e=>{px=e.clientX;py=e.clientY;mouseOn=true;halo.style.opacity='1';
+    if(Math.random()<0.25){const p=document.createElement('div');p.textContent=pick(['✨','💕','🍩','⭐','🐽']);
+    p.style.cssText=`position:fixed;left:${e.clientX}px;top:${e.clientY}px;pointer-events:none;z-index:9998;font-size:${10+Math.random()*10}px;transition:transform 1s,opacity 1s;opacity:1`;
+    document.body.appendChild(p);requestAnimationFrame(()=>{p.style.transform=`translate(${(Math.random()-.5)*60}px,${-40-Math.random()*40}px) scale(.2) rotate(${Math.random()*360}deg)`;p.style.opacity='0';});
+    setTimeout(()=>p.remove(),1100);}});
+  addEventListener('mouseleave',()=>{mouseOn=false;halo.style.opacity='0';});
+  function loop(){hx+=(px-hx)*0.2;hy+=(py-hy)*0.2;halo.style.left=hx+'px';halo.style.top=hy+'px';requestAnimationFrame(loop);}
+  loop();
+})();
+
+/* ===================== 经文滚动 ===================== */
+(function(){
+  const scrs=['猪说，要有光，于是便有了粉红色的光','凡信我者，必得起飞；凡爱甜甜圈者，必得永生','人若是不胖，起飞便没灵魂','今日之卡路里，明日之升力','地球是圆的，所以所有猪最终都能飞到你身边','神猪爱你，不管你有多圆','引力是一种幻觉，甜甜圈才是真实','当你怀疑自己能不能飞的时候，你已经在飞了'];
+  const t=document.getElementById('holyTrack');const all=[...scrs,...scrs];
+  t.innerHTML=all.map(s=>`<span>${s}</span>`).join('');
+})();
+
+/* ===================== 统计数滚动增长 ===================== */
+(function(){
+  const f=document.getElementById('statFollower'),p=document.getElementById('statPrayer');
+  const fBase=parseInt(localStorage.getItem('pigFollower')||'9999',10);
+  f.textContent=fBase.toLocaleString();
+  setInterval(()=>{if(Math.random()<0.5){const n=parseInt(f.textContent.replace(/,/g,''))+randInt(1,3);f.textContent=n.toLocaleString();localStorage.setItem('pigFollower',n);}},2000);
+  setInterval(()=>{const n=parseInt(p.textContent)+randInt(0,2);p.textContent=n;},1500);
+})();
+
+/* ===================== 英雄神猪点击交互 ===================== */
+(function(){
+  const wrap=document.getElementById('heroPig');const pig=wrap.querySelector('.hero-pig');
+  const faces=['🐷','🐽','🐖','🥓','🍩','☁️','🌟','🐷','🐷'];
+  const msgs=[['神猪打了个喷嚏~ 祝你起飞顺利','阿嚏~'],['神猪抛给你一个甜甜圈~ 接住！🍩','接住啦！'],['神猪对你眨了眨左眼~ 你今天必有好运','眨眼成功！'],['神猪原地起飞了三米又落下来~ 它说只是热身','热身成功'],['神猪哼了一声："凡点我者，可免费许愿一次"','哼哼~'],['神猪亲了你一口~ 💋 你获得神圣BUFF一个','Mua！']];
+  let clicks=0;
+  wrap.addEventListener('click',()=>{
+    clicks++;SFX.pig();
+    const face=faces[clicks%faces.length];pig.textContent=face;
+    setTimeout(()=>pig.textContent='🐷',500);
+    const m=pick(msgs);
+    showBlessing(m[0],m[1],face==='🍩'?'🍩':'🐷');
+    celebrateBurst(wrap,12);
+    if(clicks%10===0){
+      showToast('🎉 连续点神猪 '+clicks+' 次！解锁：神猪狂热粉勋章');
+      fullConfetti();
+    }
+  });
+  document.getElementById('prayNow').addEventListener('click',()=>{SFX.pray();showBlessing('祈祷已送达','神猪听到了你的祈愿，它正在吃甜甜圈，请稍等','🕉️');});
+})();
+
+/* ===================== 快速祈愿按钮 ===================== */
+(function(){
+  const btns=document.querySelectorAll('.pray-btn');
+  const results={
+    '起飞':['神猪向你吹来一阵风~ 你离地了0.3厘米！','跑道已清空，准备起飞！','地心引力今天请假，尽情飞！'],
+    '暴富':['神猪把一个金甜甜圈放在了你头顶~','财神爷出差了，神猪代班，保证你爽！','钱包已经收到神猪祝福，正在膨胀中'],
+    '姻缘':['月老在神猪面前也得让道~ 红线已到','神猪做媒，成功率 +200%','月老被甜甜圈收买，良缘即刻降临'],
+    '不挂科':['神猪的知识光环已为你开启~','知识点全部装进甜甜圈，吃了就记住','监考老师被神猪催眠了，开卷！'],
+    '零食':['冰箱已被神猪填满🍰🍩🍪🍫','零食柜子神圣化了，吃多少都不胖','神猪给你开了零食无限供应许可'],
+    '和平':['神猪用甜甜圈在世界地图画了个圈~','联合国已请神猪当荣誉大使','明天会更好（神猪说的）'],
+    '减肥':['减肥申请已被神猪驳回👋 多吃一个甜甜圈吧','神猪说：胖是福气，你福气满满的','圆融诫已触发，立刻点一份外卖补偿自己']
+  };
+  btns.forEach(b=>b.addEventListener('click',()=>{
+    SFX.pray();b.classList.add('active');setTimeout(()=>b.classList.remove('active'),400);
+    showBlessing(`祈愿：${b.dataset.pray}`,pick(results[b.dataset.pray]||['神猪收到你的心愿了~']),pick(['🙏','🕉️','☨','🌟','💕']));
+    celebrateBurst(b,8);
+  }));
+})();
+
+/* ===================== 传说：点击展开隐藏经文 ===================== */
+(function(){
+  document.querySelectorAll('[data-legend]').forEach(el=>{
+    el.addEventListener('click',()=>{el.classList.toggle('open');SFX.pig();});
+  });
+})();
+
+/* ===================== 神谕抽签 ===================== */
+(function(){
+  const box=document.getElementById('oracleBox');
+  const textEl=box.querySelector('.oracle-text');
+  const stickEl=box.querySelector('.oracle-stick');
+  const oracles=[
+    {l:'great',t:'上上签 · 龙飞猪舞',s:'今日神猪力爆棚，诸事皆宜，特别是吃和睡！',sig:'—— 神猪经·第99签'},
+    {l:'great',t:'上上签 · 粉色祥瑞',s:'你将在路上捡到一个甜甜圈（或者同等价值的幸福）',sig:'—— 神猪经·第16签'},
+    {l:'good',t:'上签 · 圆融无碍',s:'今日不宜减肥，宜加第二份饭。神猪会记住你的虔诚。',sig:'—— 神猪经·第52签'},
+    {l:'good',t:'上签 · 风助猪飞',s:'顺风的时候，连猪都能飞。你今天就很顺风。',sig:'—— 神猪经·第77签'},
+    {l:'good',t:'中签 · 甜甜圈满溢',s:'今日财运小涨，可买一张彩票 / 一杯奶茶 / 三个甜甜圈',sig:'—— 神猪经·第33签'},
+    {l:'mid',t:'中签 · 猪在途中',s:'所求之事尚需等待，吃个甜甜圈慢慢等，别急。',sig:'—— 神猪经·第42签'},
+    {l:'mid',t:'中签 · 云雾遮猪',s:'今日会有点迷糊，别做重要决定，适合躺平发呆。',sig:'—— 神猪经·第61签'},
+    {l:'warn',t:'下签 · 引力躁动',s:'地心引力今日搞事情，建议不要跑跳，多吃多睡。',sig:'—— 神猪经·第88签'},
+    {l:'warn',t:'下签 · 甜甜圈告急',s:'今日零食容易断货，出门前先确认库存，小心没糖吃。',sig:'—— 神猪经·第24签'},
+    {l:'great',t:'上上签 · 神猪附体',s:'从你求签的姿势看，你今天就是神猪本人下凡，所有愿望都实现！',sig:'—— 神猪经·第1签（隐藏）'}
+  ];
+  function draw(){
+    SFX.oracle();box.classList.remove('reveal');stickEl.textContent='🎋';
+    textEl.innerHTML='<div style="opacity:.7">签筒摇动中…神猪思考中…</div>';
+    const sh=setInterval(()=>{stickEl.style.transform=`rotate(${(Math.random()-.5)*40}deg)`;},80);
+    setTimeout(()=>{
+      clearInterval(sh);const o=pick(oracles);
+      box.classList.add('reveal');stickEl.textContent='🎋';
+      const cls=o.l==='great'?'lvl-great':o.l==='good'?'lvl-good':o.l==='mid'?'lvl-mid':'lvl-warn';
+      textEl.innerHTML=`<span class="oracle-lvl ${cls}">${o.t}</span><div>${o.s}</div><span class="sig">${o.sig}</span>`;
+      celebrateBurst(box,16);
+    },1600);
+  }
+  document.getElementById('drawOracle').addEventListener('click',draw);
+  document.getElementById('anotherOracle').addEventListener('click',()=>{draw();showToast('神猪说：连求三签为限，心诚则灵');});
+})();
+
+/* ===================== 圣物柜 ===================== */
+(function(){
+  document.querySelectorAll('.relic').forEach(r=>{
+    r.addEventListener('click',()=>{
+      SFX.relic();
+      const buff=r.dataset.buff;
+      showBlessing('获得神圣BUFF','【'+buff+'】已生效，24小时内无限次复活。',r.querySelector('.em').textContent);
+      celebrateBurst(r,10);
+    });
+  });
+})();
+
+/* ===================== 见证墙 ===================== */
+(function(){
+  const box=document.getElementById('wall');
+  const defaultT=[
+    {n:'圆融大长老',t:'信了神猪后我胖了20斤，但我感觉身体轻盈了，我知道这是起飞前的油。',sc:999},
+    {n:'甜甜圈小甜甜',t:'考试前摸了圣物柜里的棉花糖，结果蒙的全对！神猪真神！',sc:555},
+    {n:'起飞练习生',t:'我今天从椅子上跳下来，离地0.2秒！神猪诚不欺我！',sc:333},
+    {n:'飞天小粉红',t:'自从进了教，别人笑我胖，我笑别人不会飞。心态大好了。',sc:777},
+    {n:'前减肥协会会长',t:'退了减肥协会，加入神猪教。现在吃得香睡得好，朋友都说我气色红润了。',sc:888},
+    {n:'银河外卖配送员',t:'经常遇到一只粉色的猪超我车，后来才知道是教主本人。给五星好评。',sc:666},
+  ];
+  const saved=JSON.parse(localStorage.getItem('pigTesti')||'null')||defaultT;
+  function render(){
+    box.innerHTML='';
+    saved.slice(-12).reverse().forEach((t,i)=>{
+      const el=document.createElement('div');el.className='testi';
+      el.innerHTML=`<div class="score">${pick(['⭐','🌟','✨','💕','🍩'])}</div>
+        <div class="who">${t.n}<span class="tag">${t.sc||'新'}</span></div><p>${t.t}</p>`;
+      box.appendChild(el);
+    });
+  }
+  render();
+  document.getElementById('wallSubmit').addEventListener('click',()=>{
+    const n=document.getElementById('wallName').value.trim();
+    const tx=document.getElementById('wallText').value.trim();
+    if(n.length<2){showToast('教名至少2个字哦~');return;}
+    if(tx.length<4){showToast('见证多说几句神猪才感动~');return;}
+    saved.push({n,t:tx,sc:randInt(100,999)});
+    localStorage.setItem('pigTesti',JSON.stringify(saved));
+    document.getElementById('wallName').value='';
+    document.getElementById('wallText').value='';
+    SFX.pray();render();showToast('🙏 见证已刻入神猪石碑');
+    celebrateBurst(box,12);
+  });
+})();
+
+/* ===================== 彩纸爆炸 ===================== */
+const celeBox=document.getElementById('celebrate');
+function celebrateBurst(target,n=20){
+  const rect=target.getBoundingClientRect();
+  const colors=['#ffb3c6','#ff6b94','#ffd95b','#8fd3ff','#4a90d9','#bfe9b0','#fff'];
+  for(let i=0;i<n;i++){
+    const c=document.createElement('div');c.className='confetti';
+    c.style.left=(rect.left+rect.width/2+rand(-30,30))+'px';
+    c.style.top=(rect.top+rect.height/2)+'px';
+    c.style.background=pick(colors);
+    c.style.animationDuration=rand(1,2.5)+'s';
+    const deg=rand(0,360),dist=rand(80,260);
+    const dx=Math.cos(deg/180*Math.PI)*dist,dy=Math.sin(deg/180*Math.PI)*dist;
+    c.animate([{transform:`translate(0,0) rotate(0)`,opacity:1},{transform:`translate(${dx}px,${dy+300}px) rotate(720deg)`,opacity:0}],
+      {duration:rand(800,1800),easing:'cubic-bezier(.2,.8,.4,1)',fill:'forwards'});
+    celeBox.appendChild(c);setTimeout(()=>c.remove(),2200);
+  }
+  celeBox.classList.add('show');setTimeout(()=>celeBox.classList.remove('show'),2000);
+}
+function fullConfetti(){
+  const colors=['#ffb3c6','#ff6b94','#ffd95b','#8fd3ff','#4a90d9','#bfe9b0'];
+  for(let i=0;i<80;i++){
+    const c=document.createElement('div');c.className='confetti';
+    c.style.left=rand(0,innerWidth)+'px';
+    c.style.background=pick(colors);
+    c.style.animationDuration=rand(2,4)+'s';
+    celeBox.appendChild(c);setTimeout(()=>c.remove(),4200);
+  }
+  celeBox.classList.add('show');setTimeout(()=>celeBox.classList.remove('show'),4000);
+}
+document.addEventListener('click',e=>{
+  if(e.target.closest('button')||e.target.closest('a'))return;
+  if(Math.random()<0.08)celebrateBurst(e.target,5);
+});
+
+/* ===================== 飞行游戏（升级版） ===================== */
+(function(){
+  const cv=document.getElementById('game-canvas');const ctx=cv.getContext('2d');
+  const W=cv.width,H=cv.height;
+  const scoreEl=document.getElementById('score');
+  const bestEl=document.getElementById('best');
+  const donutEl=document.getElementById('donuts');
+  const stateEl=document.getElementById('state');
+  const startBtn=document.getElementById('startBtn');
+  const pauseBtn=document.getElementById('pauseBtn');
+  const soundBtn=document.getElementById('soundBtn');
+
+  let pig,obs,foods,particles,score,best,speed,running,paused,frame,trail,donuts,holyMode,holyTimer;
+  function reset(){
+    pig={x:120,y:H/2,vy:0,r:26,rot:0};obs=[];foods=[];particles=[];score=0;speed=2.6;frame=0;trail=[];donuts=0;holyMode=false;holyTimer=0;
+    best=parseInt(localStorage.getItem('pigBest')||'0',10);
+    bestEl.textContent=best;scoreEl.textContent=0;donutEl.textContent=0;
+  }
+  reset();
+
+  function spawn(){
+    if(frame%90===0){
+      const type=Math.random()<0.5?'cloud':'bolt';
+      const gap=holyMode?240:170;
+      const topH=40+Math.random()*(H-gap-80);
+      obs.push({x:W,y:0,w:60,h:topH,type,passed:false});
+      obs.push({x:W,y:topH+gap,w:60,h:H-(topH+gap),type,passed:false});
+    }
+    if(frame%65===0){foods.push({x:W+30,y:60+Math.random()*(H-120),r:18,rot:0});}
+    if(frame%230===0){foods.push({x:W+30,y:60+Math.random()*(H-120),r:22,rot:0,golden:true});}
+  }
+  function drawPig(x,y,rot){
+    ctx.save();ctx.translate(x,y);ctx.rotate(rot);
+    if(holyMode){ctx.save();ctx.globalAlpha=.4;ctx.fillStyle='#ffd95b';ctx.beginPath();ctx.arc(0,0,40+Math.sin(frame*0.2)*4,0,Math.PI*2);ctx.fill();ctx.restore();}
+    ctx.fillStyle='rgba(0,0,0,.12)';ctx.beginPath();ctx.ellipse(0,30,24,6,0,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle=holyMode?'#ffd95b':'#ffb3c6';ctx.beginPath();ctx.arc(0,0,24,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#ff8fab';ctx.beginPath();ctx.moveTo(-16,-18);ctx.lineTo(-10,-30);ctx.lineTo(-4,-18);ctx.fill();
+    ctx.beginPath();ctx.moveTo(4,-18);ctx.lineTo(10,-30);ctx.lineTo(16,-18);ctx.fill();
+    ctx.fillStyle='#3a2b3d';ctx.beginPath();ctx.arc(-7,-4,3,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.arc(7,-4,3,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(-6,-5,1,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.arc(8,-5,1,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#ff6b94';ctx.beginPath();ctx.ellipse(0,6,9,7,0,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#c44569';ctx.beginPath();ctx.arc(-3,6,1.5,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.arc(3,6,1.5,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='rgba(255,255,255,.9)';const wf=Math.sin(frame*0.3)*0.4;
+    ctx.save();ctx.translate(-22,-6);ctx.rotate(-0.5+wf);ctx.beginPath();ctx.ellipse(0,0,14,7,0,0,Math.PI*2);ctx.fill();ctx.restore();
+    ctx.save();ctx.translate(22,-6);ctx.rotate(0.5-wf);ctx.beginPath();ctx.ellipse(0,0,14,7,0,0,Math.PI*2);ctx.fill();ctx.restore();
+    ctx.restore();
+  }
+  function drawCloud(o){
+    ctx.fillStyle='rgba(255,255,255,.95)';
+    ctx.beginPath();ctx.moveTo(o.x+15,o.y);ctx.quadraticCurveTo(o.x+o.w,o.y,o.x+o.w,o.y+o.h*0.3);
+    ctx.lineTo(o.x+o.w-5,o.y+o.h);ctx.lineTo(o.x+5,o.y+o.h);ctx.lineTo(o.x,o.y+o.h*0.4);
+    ctx.quadraticCurveTo(o.x,o.y,o.x+15,o.y);ctx.closePath();ctx.fill();
+  }
+  function drawBolt(o){
+    ctx.fillStyle='#ffd95b';ctx.strokeStyle='#e8a900';ctx.lineWidth=2;
+    ctx.beginPath();ctx.moveTo(o.x+10,o.y);ctx.lineTo(o.x+o.w-10,o.y+o.h*0.4);
+    ctx.lineTo(o.x+o.w*0.5,o.y+o.h*0.5);ctx.lineTo(o.x+o.w-5,o.y+o.h);
+    ctx.lineTo(o.x+5,o.y+o.h*0.6);ctx.lineTo(o.x+o.w*0.5,o.y+o.h*0.5);ctx.closePath();ctx.fill();ctx.stroke();
+  }
+  function drawDonut(f){
+    ctx.save();ctx.translate(f.x,f.y);ctx.rotate(f.rot);
+    if(f.golden){ctx.save();ctx.globalAlpha=.4+Math.sin(frame*0.2)*.2;ctx.fillStyle='#ffd95b';ctx.beginPath();ctx.arc(0,0,f.r+8,0,Math.PI*2);ctx.fill();ctx.restore();}
+    ctx.fillStyle=f.golden?'#ffd95b':'#d4a373';ctx.beginPath();ctx.arc(0,0,f.r,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#fff7f3';ctx.beginPath();ctx.arc(0,0,f.r*0.45,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#ff6b94';ctx.beginPath();ctx.arc(-8,-6,2,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#8fd3ff';ctx.beginPath();ctx.arc(9,-3,2,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#ffd95b';ctx.beginPath();ctx.arc(2,8,2,0,Math.PI*2);ctx.fill();
+    ctx.restore();
+  }
+  function hit(a,b){return a.x<b.x+b.w&&a.x+a.r>b.x&&a.y<b.y+b.h&&a.y+a.r>b.y;}
+  function hitC(a,c){const dx=a.x-c.x,dy=a.y-c.y;return Math.hypot(dx,dy)<a.r+c.r;}
+  function flap(){if(!running||paused)return;pig.vy=-6.2;SFX.flap();
+    for(let i=0;i<5;i++)particles.push({x:pig.x-10,y:pig.y,vy:1+Math.random()*2,vx:-2-Math.random()*2,life:30,c:'#fff'});}
+  function update(){
+    frame++;pig.vy+=0.28;pig.vy=Math.min(pig.vy,7);pig.y+=pig.vy;
+    pig.rot=Math.max(-0.5,Math.min(1.2,pig.vy*0.08));
+    if(frame%2===0)trail.push({x:pig.x-20,y:pig.y,life:22});trail=trail.filter(t=>{t.life--;return t.life>0;});
+    spawn();speed+=0.0018;if(holyMode){holyTimer--;if(holyTimer<=0)holyMode=false;}
+    obs.forEach(o=>o.x-=speed);obs=obs.filter(o=>o.x+o.w>-20);
+    foods.forEach(f=>{f.x-=speed;f.rot+=0.05;});foods=foods.filter(f=>f.x>-30);
+    obs.forEach(o=>{if(!o.passed&&o.x+o.w<pig.x){o.passed=true;score+=0.5;}});
+    if(!holyMode){for(const o of obs){if(hit(pig,o)){gameOver();return;}}}
+    foods=foods.filter(f=>{if(hitC(pig,f)){score+=f.golden?25:5;donuts++;if(f.golden){holyMode=true;holyTimer=300;showToast('🌟 神猪形态！无敌5秒');}SFX.food();celebrateBurst({getBoundingClientRect:()=>cv.getBoundingClientRect()},4);donutEl.textContent=donuts;return false;}return true;});
+    if(pig.y-24<0||pig.y+24>H){gameOver();return;}
+    particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.life--;});particles=particles.filter(p=>p.life>0);
+    scoreEl.textContent=Math.floor(score);
+  }
+  function render(){
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle='#bfe9b0';ctx.beginPath();ctx.moveTo(0,H-30);
+    for(let x=0;x<=W;x+=40)ctx.lineTo(x,H-30-Math.abs(Math.sin(x*0.02+frame*0.01))*25);
+    ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.fill();
+    trail.forEach((t,i)=>{const hue=(i*20+frame*2)%360;ctx.fillStyle=`hsla(${hue},90%,65%,${t.life/22*0.6})`;ctx.beginPath();ctx.arc(t.x,t.y,t.life/1.5,0,Math.PI*2);ctx.fill();});
+    foods.forEach(drawDonut);
+    obs.forEach(o=>o.type==='cloud'?drawCloud(o):drawBolt(o));
+    particles.forEach(p=>{ctx.fillStyle=p.c;ctx.globalAlpha=p.life/30;ctx.beginPath();ctx.arc(p.x,p.y,3,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;});
+    if(holyMode){ctx.save();ctx.globalAlpha=.5+Math.sin(frame*0.3)*.2;ctx.fillStyle='#ffd95b';ctx.beginPath();ctx.arc(pig.x,pig.y,50,0,Math.PI*2);ctx.fill();ctx.restore();}
+    drawPig(pig.x,pig.y,pig.rot);
+  }
+  let loopId;function loop(){if(!running)return;if(!paused){update();render();}loopId=requestAnimationFrame(loop);}
+  function start(){reset();running=true;paused=false;stateEl.textContent='飞行中';startBtn.textContent='🔄 重新开始';flap();loop();}
+  function gameOver(){running=false;stateEl.textContent='💥 坠机';SFX.hit();
+    if(Math.floor(score)>best){best=Math.floor(score);localStorage.setItem('pigBest',best);bestEl.textContent=best;showToast('🏆 新纪录！神猪显圣！');fullConfetti();}
+    else showToast('💥 坠机了！再试一次吧');
+    render();ctx.fillStyle='rgba(255,107,148,.3)';ctx.beginPath();ctx.arc(pig.x,pig.y,40,0,Math.PI*2);ctx.fill();}
+  startBtn.addEventListener('click',start);
+  pauseBtn.addEventListener('click',()=>{if(!running)return;paused=!paused;stateEl.textContent=paused?'已暂停':'飞行中';pauseBtn.textContent=paused?'▶ 继续':'⏸ 暂停';if(!paused)loop();});
+  soundBtn.addEventListener('click',()=>{const on=SFX.toggle();soundBtn.textContent=on?'🔊 音效开':'🔇 音效关';showToast(on?'🔊 神猪圣音开启':'🔇 神猪进入禅定');});
+  function flapHandler(e){e.preventDefault();flap();}
+  cv.addEventListener('mousedown',flapHandler);cv.addEventListener('touchstart',flapHandler,{passive:false});
+  window.addEventListener('keydown',e=>{if(e.code==='Space'){e.preventDefault();flap();}});
+  function initDraw(){ctx.clearRect(0,0,W,H);ctx.fillStyle='#bfe9b0';ctx.beginPath();ctx.moveTo(0,H-30);
+    for(let x=0;x<=W;x+=40)ctx.lineTo(x,H-30-Math.abs(Math.sin(x*0.02))*25);ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.fill();
+    drawPig(120,H/2,0);ctx.fillStyle='rgba(58,43,61,.55)';ctx.font='bold 22px sans-serif';ctx.textAlign='center';
+    ctx.fillText('🚀 点击「开始飞行」即可起飞',W/2,H/2-80);}
+  initDraw();
+})();
+
+/* ===================== 甜甜圈大转盘 ===================== */
+(function(){
+  const cv=document.getElementById('wheelCanvas');const ctx=cv.getContext('2d');
+  const prizes=[
+    {n:'神猪的爱',c:'#ff6b94',msg:'💞 神猪的爱！被神猪亲亲，起飞概率+999%'},
+    {n:'免费甜甜圈',c:'#ffd95b',msg:'🍩 免费甜甜圈 x1！请默念领取（实际效果因人而异）'},
+    {n:'财运亨通',c:'#8fd3ff',msg:'💰 财运亨通！今天捡到硬币概率翻倍'},
+    {n:'神猪之梦',c:'#c44569',msg:'💤 神猪之梦！今晚梦里会有一个好消息等你'},
+    {n:'减肥赦免',c:'#bfe9b0',msg:'🍰 减肥赦免卡！今日多吃的卡路里一笔勾销'},
+    {n:'飞行BUFF',c:'#ffb3c6',msg:'✈️ 神圣飞行BUFF！下局飞行游戏得分 x2'},
+    {n:'上上之签',c:'#fec89a',msg:'🌟 上上之签！今天运气好到神猪都笑了'},
+    {n:'谢谢参与',c:'#dcd0c0',msg:'🐷 神猪说：你再转一次就能中奖（它每次都这么说）'}
+  ];
+  const n=prizes.length;const R=cv.width/2-8;let rot=0,spinAnim=false,remain=parseInt(localStorage.getItem('pigWheelDate')===new Date().toDateString()?(localStorage.getItem('pigWheelRemain')||'3'):'3',10);
+  document.getElementById('remain').textContent=remain;
+  function draw(){
+    ctx.clearRect(0,0,cv.width,cv.height);ctx.save();ctx.translate(cv.width/2,cv.height/2);ctx.rotate(rot);
+    for(let i=0;i<n;i++){
+      const a0=(i/n)*Math.PI*2-Math.PI/2,a1=((i+1)/n)*Math.PI*2-Math.PI/2;
+      ctx.fillStyle=prizes[i].c;ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,R,a0,a1);ctx.closePath();ctx.fill();
+      ctx.strokeStyle='#fff';ctx.lineWidth=3;ctx.stroke();
+      ctx.save();ctx.rotate(a0+(a1-a0)/2);ctx.fillStyle='#3a2b3d';ctx.font='bold 15px sans-serif';ctx.textAlign='center';
+      ctx.fillText(prizes[i].n,R*0.6,5);ctx.restore();
+    }
+    ctx.restore();
+  }
+  draw();
+  function spin(){
+    if(spinAnim)return;
+    if(remain<=0){showToast('今日次数用完，神猪说明天早点来哦~');return;}
+    remain--;localStorage.setItem('pigWheelRemain',remain);localStorage.setItem('pigWheelDate',new Date().toDateString());
+    document.getElementById('remain').textContent=remain;
+    spinAnim=true;const idx=randInt(0,n-1);const turns=4+Math.random()*2;
+    const target=rot+Math.PI*2*turns-(idx/n)*Math.PI*2-(1/n)*Math.PI;
+    let start=performance.now(),startRot=rot,dur=3500+Math.random()*800;
+    (function step(t){
+      const p=Math.min((t-start)/dur,1);const ease=1-Math.pow(1-p,3);rot=startRot+(target-startRot)*ease;draw();SFX.spin();
+      if(p<1){requestAnimationFrame(step);}
+      else{spinAnim=false;SFX.win();const pz=prizes[idx];
+        document.getElementById('prizeResult').innerHTML=`🎁 ${pz.msg}`;
+        showBlessing('神猪恩赐降临',pz.msg,pick(['🎁','🎉','🌟','🍩','🐷']));
+        fullConfetti();
+      }
+    })(start);
+  }
+  document.getElementById('spinBtn').addEventListener('click',spin);
+  document.getElementById('wheelCenter').addEventListener('click',spin);
+})();
+
+/* ===================== 入教表单 ===================== */
+(function(){
+  const form=document.getElementById('contactForm');
+  function setErr(id,bad){document.getElementById(id).classList.toggle('invalid',bad);}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    const name=form.name.value.trim();const email=form.email.value.trim();
+    const faith=form.faith.value;const donut=form.donut.value;
+    const message=form.message.value.trim();const agree=form.agree.checked;
+    let ok=true;
+    setErr('f-name',name.length<2);ok=ok&&name.length>=2;
+    setErr('f-email',!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));ok=ok&&/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    setErr('f-faith',!faith);ok=ok&&!!faith;
+    setErr('f-donut',!donut);ok=ok&&!!donut;
+    setErr('f-message',message.length<5);ok=ok&&message.length>=5;
+    setErr('f-agree',!agree);ok=ok&&agree;
+    if(!ok){showToast('🐷 表单有误，神猪拒收~ 请检查标红项');return;}
+    SFX.win();fullConfetti();
+    showBlessing('入教申请已上达天听','神猪将于三日内托梦给你审批。请保持手机开机，枕头底下放一个甜甜圈。','🕉️');
+    form.reset();
+  });
+  ['name','email','faith','donut','message'].forEach(n=>{
+    form[n].addEventListener('input',()=>setErr('f-'+n,false));
+    form[n].addEventListener('change',()=>setErr('f-'+n,false));
+  });
+  form.agree.addEventListener('change',()=>setErr('f-agree',false));
+})();
+
+/* ===================== Konami 彩蛋 ↑↑↓↓←→←→ B A ===================== */
+(function(){
+  const code=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  let idx=0;
+  window.addEventListener('keydown',e=>{
+    const k=e.key.toLowerCase()==='b'?'b':e.key.toLowerCase()==='a'?'a':e.key;
+    if(k.toLowerCase()===code[idx].toLowerCase()){idx++;if(idx===code.length){
+      fullConfetti();SFX.win();
+      showBlessing('🎉 解锁：【神猪真身】','你已输入神猪圣码，神猪亲自为你加持：全属性 MAX，起飞成功率 100%，甜甜圈无限量。','🐷🐷🐷');
+      for(let i=0;i<20;i++)setTimeout(()=>showToast(pick(['🐷 神猪显灵！','🍩 甜甜圈雨！','✨ 圣光+999','💕 神猪爱你'])),i*300);
+      idx=0;
+    }}else{idx=(code[0].toLowerCase()===k.toLowerCase())?1:0;}
+  });
+})();
+
+/* ===================== 键盘快捷键 ===================== */
+window.addEventListener('keydown',e=>{
+  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+  if(e.key==='p'||e.key==='P'){SFX.pray();showBlessing('快速祈祷','神猪说："我听到了，吃个甜甜圈吧~"','🕉️');}
+  if(e.key==='a'||e.key==='A'){SFX.win();showToast('🐷 阿门！愿神猪的爱与你同在~');celebrateBurst(document.body,8);}
+});
+</script>
 </body>
 </html>
